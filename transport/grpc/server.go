@@ -87,7 +87,7 @@ func ServerFinalizer[Request, Response any](f ...ServerFinalizerFunc) ServerOpti
 }
 
 // ServeGRPC implements the Handler interface.
-func (s Server[Request, Response]) ServeGRPC(ctx context.Context, req Request) (retctx context.Context, resp interface{}, err error) {
+func (s Server[Request, Response]) ServeGRPC(ctx context.Context, req interface{}) (retctx context.Context, resp interface{}, err error) {
 	// Retrieve gRPC metadata.
 	md, ok := metadata.FromIncomingContext(ctx)
 	if !ok {
